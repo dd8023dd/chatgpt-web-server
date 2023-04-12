@@ -74,8 +74,8 @@ https://gitee.com/aceysx/chatgpt-proxy/tree/main/
 各位可爱的大佬们点个Star呗 =v=
 
 请作者喝一杯可乐
+（微信赞赏码）
 
 
-
-
+<img src="https://user-images.githubusercontent.com/34155196/231450085-4b383983-bfc3-4606-be71-ab082fa4a02d.jpg" width="350">
 
