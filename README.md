@@ -61,7 +61,13 @@ chatgpt套壳网站。
 
    
 
-5. 前端项目参考：
+5. 前端项目:
+
+   1. 项目根目录下web即为前端项目
+   2. 需要安装node（自己找教程）
+   3. 在web的根目录下执行npm install 安装依赖
+   4. 执行 npm run dev 开发模式，可以和本项目进行本地联调
+   5. 执行npm run build 进行打包，然后在项目根目录下的dist文件夹中找到打包的文件。在服务器部署的时候，将dist文件夹下的文件复制到nginx配置的前端目录下。根据配置的域名访问即可（域名别忘了做DNS映射）。
 
 
 
@@ -73,9 +79,14 @@ https://gitee.com/aceysx/chatgpt-proxy/tree/main/
 
 各位可爱的大佬们点个Star呗 =v=
 
+如果疑问，进群讨论：
+
+<img src="https://user-images.githubusercontent.com/34155196/231454597-1c7c85e9-75fd-4a9a-ab31-1b7f563794f9.jpg" width="350">
+
+
+
 请作者喝一杯可乐
 （微信赞赏码）
-
 
 <img src="https://user-images.githubusercontent.com/34155196/231450085-4b383983-bfc3-4606-be71-ab082fa4a02d.jpg" width="350">
 
