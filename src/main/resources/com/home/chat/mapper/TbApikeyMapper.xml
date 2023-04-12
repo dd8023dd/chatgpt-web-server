@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.home.chat.dao.TbApikeyDAO">
+  <resultMap id="BaseResultMap" type="com.home.chat.pojo.entity.TbApikeyEntity">
+    <!--  警告:此标签由工具自动生成,下次自动生成会被覆盖,请勿手动修改!  生成时间: 2023-04-10 18:06:33 星期一.-->
+    <id column="row_id" jdbcType="BIGINT" property="rowId" />
+    <result column="create_date" jdbcType="INTEGER" property="createDate" />
+    <result column="create_time" jdbcType="INTEGER" property="createTime" />
+    <result column="update_date" jdbcType="INTEGER" property="updateDate" />
+    <result column="update_time" jdbcType="INTEGER" property="updateTime" />
+    <result column="update_times" jdbcType="INTEGER" property="updateTimes" />
+    <result column="api_key" jdbcType="VARCHAR" property="apiKey" />
+    <result column="balance" jdbcType="VARCHAR" property="balance" />
+    <result column="expire_date" jdbcType="INTEGER" property="expireDate" />
+    <result column="use_times" jdbcType="INTEGER" property="useTimes" />
+    <result column="valid_status" jdbcType="VARCHAR" property="validStatus" />
+  </resultMap>
+  <sql id="Base_Query_Where_Clause">
+    <!--  info:此标签可以手动修改,下次生成不会覆盖!-->
+    <where>
+      <if test="rowId != null">
+        AND row_id = #{rowId,jdbcType=BIGINT}
+      </if>
+      <if test="createDate != null">
+        AND create_date = #{createDate,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=INTEGER}
+      </if>
+      <if test="updateDate != null">
+        AND update_date = #{updateDate,jdbcType=INTEGER}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=INTEGER}
+      </if>
+      <if test="updateTimes != null">
+        AND update_times = #{updateTimes,jdbcType=INTEGER}
+      </if>
+      <if test="apiKey != null and apiKey.length() &gt; 0">
+        AND api_key = #{apiKey,jdbcType=VARCHAR}
+      </if>
+      <if test="balance != null and balance.length() &gt; 0">
+        AND balance = #{balance,jdbcType=VARCHAR}
+      </if>
+      <if test="expireDate != null">
+        AND expire_date = #{expireDate,jdbcType=INTEGER}
+      </if>
+      <if test="useTimes != null">
+        AND use_times = #{useTimes,jdbcType=INTEGER}
+      </if>
+      <if test="validStatus != null and validStatus.length() &gt; 0">
+        AND valid_status = #{validStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="rowIds != null and rowIds.size &gt; 0">
+        AND row_id IN 
+        <foreach close=")" collection="rowIds" item="item" open="(" separator=",">
+          #{item,jdbcType=BIGINT}
+        </foreach>
+      </if>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--  警告:此标签由工具自动生成,下次自动生成会被覆盖,请勿手动修改!-->
+    row_id, create_date, create_time, update_date, update_time, update_times, api_key, 
+    balance, expire_date, use_times, valid_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--  警告:此标签由工具自动生成,下次自动生成会被覆盖,请勿手动修改!-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_apikey
+    where row_id = #{rowId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--  警告:此标签由工具自动生成,下次自动生成会被覆盖,请勿手动修改!-->
+    delete from tb_apikey
+    where row_id = #{rowId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="row_id" keyProperty="rowId" parameterType="com.home.chat.pojo.entity.TbApikeyEntity" useGeneratedKeys="true">
+    <!--  警告:此标签由工具自动生成,下次自动生成会被覆盖,请勿手动修改!-->
+    insert into tb_apikey (row_id, create_date, create_time, 
+      update_date, update_time, update_times, api_key, 
+      balance, expire_date, use_times, 
+      valid_status)
+    values (#{rowId,jdbcType=BIGINT}, date_format(curdate(),'%Y%m%d'), date_format(curtime(),'%H%i%s'), 
+      date_format(curdate(),'%Y%m%d'), date_format(curtime(),'%H%i%s'), 0, #{apiKey,jdbcType=VARCHAR}, 
+      #{balance,jdbcType=VARCHAR}, #{expireDate,jdbcType=INTEGER}, #{useTimes,jdbcType=INTEGER}, 
+      #{validStatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="row_id" keyProperty="rowId" parameterType="com.home.chat.pojo.entity.TbApikeyEntity" useGeneratedKeys="true">
+    <!--  警告:此标签由工具自动生成,下次自动生成会被覆盖,请勿手动修改!-->
+    insert into tb_apikey
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rowId != null">
+        row_id,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updateTimes != null">
+        update_times,
+      </if>
+      <if test="apiKey != null">
+        api_key,
+      </if>
+      <if test="balance != null">
+        balance,
+      </if>
+      <if test="expireDate != null">
+        expire_date,
+      </if>
+      <if test="useTimes != null">
+        use_times,
+      </if>
+      <if test="validStatus != null">
+        valid_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rowId != null">
+        #{rowId,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null">
+        date_format(curdate(),'%Y%m%d'),
+      </if>
+      <if test="createTime != null">
+        date_format(curtime(),'%H%i%s'),
+      </if>
+      <if test="updateDate != null">
+        date_format(curdate(),'%Y%m%d'),
+      </if>
+      <if test="updateTime != null">
+        date_format(curtime(),'%H%i%s'),
+      </if>
+      <if test="updateTimes != null">
+        0,
+      </if>
+      <if test="apiKey != null">
+        #{apiKey,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null">
+        #{balance,jdbcType=VARCHAR},
+      </if>
+      <if test="expireDate != null">
+        #{expireDate,jdbcType=INTEGER},
+      </if>
+      <if test="useTimes != null">
+        #{useTimes,jdbcType=INTEGER},
+      </if>
+      <if test="validStatus != null">
+        #{validStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.home.chat.pojo.entity.TbApikeyEntity">
+    <!--  警告:此标签由工具自动生成,下次自动生成会被覆盖,请勿手动修改!-->
+    update tb_apikey
+    <set>
+      update_date = date_format(curdate(),'%Y%m%d'),
+      update_time = date_format(curtime(),'%H%i%s'),
+      update_times = update_times + 1,
+      <if test="apiKey != null">
+        api_key = #{apiKey,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null">
+        balance = #{balance,jdbcType=VARCHAR},
+      </if>
+      <if test="expireDate != null">
+        expire_date = #{expireDate,jdbcType=INTEGER},
+      </if>
+      <if test="useTimes != null">
+        use_times = #{useTimes,jdbcType=INTEGER},
+      </if>
+      <if test="validStatus != null">
+        valid_status = #{validStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where row_id = #{rowId,jdbcType=BIGINT}
+  </update>
+  <update id="useOnece">
+     update tb_apikey set use_times =  use_times + 1 where api_key = #{apikey}
+  </update>
+  <select id="countByQuery" parameterType="com.home.chat.pojo.query.TbApikeyQuery" resultType="java.lang.Integer">
+    <!--  警告:此标签由工具自动生成,下次自动生成会被覆盖,请勿手动修改!-->
+    select count(1) AS cnt from tb_apikey
+    <include refid="Base_Query_Where_Clause" />
+  </select>
+  <delete id="deleteByQuery" parameterType="com.home.chat.pojo.query.TbApikeyQuery">
+    <!--  警告:此标签由工具自动生成,下次自动生成会被覆盖,请勿手动修改!-->
+    delete from tb_apikey
+    <include refid="Base_Query_Where_Clause" />
+  </delete>
+  <select id="queryForPage" parameterType="com.home.chat.pojo.query.TbApikeyQuery" resultMap="BaseResultMap">
+    <!--  警告:此标签由工具自动生成,下次自动生成会被覆盖,请勿手动修改!-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_apikey
+    <include refid="Base_Query_Where_Clause" />
+    <if test="order != null and order.length() > 0">
+      order by ${order}
+    </if>
+    limit #{start}, #{pageSize}
+  </select>
+  <select id="queryForObject" parameterType="com.home.chat.pojo.query.TbApikeyQuery" resultMap="BaseResultMap">
+    <!--  警告:此标签由工具自动生成,下次自动生成会被覆盖,请勿手动修改!-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_apikey
+    <include refid="Base_Query_Where_Clause" />
+    <if test="order != null and order.length() > 0">
+      order by ${order}
+    </if>
+    limit 1
+  </select>
+  <select id="queryForList" parameterType="com.home.chat.pojo.query.TbApikeyQuery" resultMap="BaseResultMap">
+    <!--  警告:此标签由工具自动生成,下次自动生成会被覆盖,请勿手动修改!-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_apikey
+    <include refid="Base_Query_Where_Clause" />
+    <if test="order != null and order.length() > 0">
+      order by ${order}
+    </if>
+  </select>
+  <delete  id="batchDelete" parameterType="java.util.List">
+    <!--  警告:此标签由工具自动生成,下次自动生成会被覆盖,请勿手动修改!-->
+    delete from tb_apikey where row_id in 
+    <foreach close=")" collection="list" item="id" open="(" separator=",">
+      #{id}
+    </foreach>
+  </delete >
+  <insert id="batchInsert" parameterType="java.util.List">
+    <!--  警告:此标签由工具自动生成,下次自动生成会被覆盖,请勿手动修改!-->
+    insert into tb_apikey (row_id, create_date, create_time, 
+      update_date, update_time, update_times, api_key, 
+      balance, expire_date, use_times, 
+      valid_status) values 
+    <foreach close="" collection="list" item="item" open="" separator=",">
+      (#{item.rowId,jdbcType=BIGINT}, date_format(curdate(),'%Y%m%d'), date_format(curtime(),'%H%i%s'), 
+        date_format(curdate(),'%Y%m%d'), date_format(curtime(),'%H%i%s'), 0, #{item.apiKey,jdbcType=VARCHAR}, 
+        #{item.balance,jdbcType=VARCHAR}, #{item.expireDate,jdbcType=INTEGER}, #{item.useTimes,jdbcType=INTEGER}, 
+        #{item.validStatus,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+</mapper>

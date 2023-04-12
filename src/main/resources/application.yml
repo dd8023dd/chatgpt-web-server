@@ -1,0 +1,47 @@
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1/db_chat?characterEncoding=UTF8&useServerPrepStmts=true&cachePrepStmts=true&cacheCallableStmts=true&autoReconnect=true&useSSL=false
+    username: root
+    password: "xxxxxxx"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: ''
+    timeout: 3000
+    jedis:
+      pool:
+        max-idle: 100
+        max-wait: 5
+        min-idle: 5
+#mybatis配置
+mybatis:
+  type-aliases-package: com.home.chat.pojo.entity
+  mapper-locations: classpath*:com/home/chat/**/*.xml
+openai:
+  # 默认的Token长度
+  max_tokens: ${MAX_TOKENS:4096}
+  # 尝试将值设为 0.9 以获得更有创意的回复，将值设为 0 以获得具有明确答案的回复
+  temperature: ${TEMPERATURE:0.9}
+  # 默认的AI模型，gpt-3.5-turbo or gpt-3.5-turbo-0301	，区别：https://platform.openai.com/docs/models/gpt-3-5
+  model: gpt-3.5-turbo
+  # 多个Key用,分割
+  keys: ${KEYS:sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx}
+  # 综合问答API
+  openai_api: https://api.openai.com/v1/chat/completions
+  # 图片问答API
+  image_api: https://api.openai.com/v1/images/generations
+  # 余额查询的API
+  credit_api: https://api.openai.com/dashboard/billing/credit_grants
+  # ${名称:值} 格式以便于在环境变量中配置，默认只需修改值即可
+  isFreeEnable: ${FREE_ENABLE:0}
+
+chat:
+  content: ${CONTENT:【东东的CHATBOT】}
+  auth: ${AUTH_KEY:dchatbot}
+  freeApiKey: ${FREE_API_KEY:}
+  notAuthContent: ${NO_AUTH_CONTENT:userkey无效}
+server:
+  servlet:
+    context-path: /chatbot
+  port: 8081
