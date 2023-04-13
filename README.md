@@ -168,7 +168,7 @@ export PATH=$PATH:$REDIS_HOME/bin
 
 https://gitee.com/aceysx/chatgpt-proxy/tree/main/
 
-
+可以使用项目下面的体验key文件，用示例网站进行体验。
 
 ## 加群&赞赏
 
